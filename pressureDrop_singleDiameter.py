@@ -1,5 +1,6 @@
 from __future__ import annotations
 import math
+import scipy
 
 G = 9.81  # m/s^2
 
@@ -43,7 +44,7 @@ def alpha_from_reynolds(re: float) -> float:
     return 2.0
 
 def friction_factor(re: float, roughness_m: float, diameter_m: float,
-                    tolerance: float = 0.001, max_iterations: int = 200) -> tuple[float, int]:
+                    tolerance: float = 0.00001, max_iterations: int = 200) -> tuple[float, int]:
     """
     Darcy friction factor. Laminar flow: = 64 / Re
 
