@@ -9,8 +9,8 @@ def friction_factor_single(
     re: float,
     roughness_m: float,
     diameter_m: float,
-    tolerance: float = 1e-5,
-    max_iterations: int = 1000,
+    tolerance: float = 1e-10,
+    max_iterations: int = 10000,
 ) -> float:
     """
     Darcy friction factor using a hard cutoff at Re = 2300.
@@ -62,8 +62,8 @@ def friction_factor_list(
     re_list: Iterable[float],
     roughness_m_list: Iterable[float],
     diameter_m_list: Iterable[float],
-    tolerance: float = 1e-5,
-    max_iterations: int = 1000,
+    tolerance: float = 1e-10,
+    max_iterations: int = 10000,
 ) -> list[float]:
     """
     Returns a list of Darcy friction factors corresponding to the input lists.
@@ -82,8 +82,8 @@ def friction_factor_list(
         for re, roughness_m, diameter_m in zip(re_list, roughness_m_list, diameter_m_list)
     ]
     
-re_list = [10000.83, 1873.272, 70293.43, 1280, 129446, 1712225, 4600000]
-roughness_m = [0.00018, 0.00200, 0.00040, 0.00000, 0.00020, 0.00200, 0.00010]
-diameter_m = [0.018, 0.100, 0.200, 0.002, 0.200, 2.500, 0.020]
+re_list = [90900]
+roughness_m = [0.001]
+diameter_m = [0.1]
 f_list = friction_factor_list(re_list, roughness_m, diameter_m)
 print(f_list)
